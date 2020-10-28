@@ -1,4 +1,6 @@
-# Internet VPC
+###############
+# Internet VPC#
+###############
 resource "aws_vpc" "main" {
   cidr_block           = "10.0.0.0/16"
   instance_tenancy     = "default"
@@ -9,8 +11,9 @@ resource "aws_vpc" "main" {
     Name = "main"
   }
 }
-
-# Subnets
+##########
+# Subnets#
+##########
 resource "aws_subnet" "main-public-1" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = "10.0.1.0/24"
@@ -76,8 +79,9 @@ resource "aws_subnet" "main-private-3" {
     Name = "main-private-3"
   }
 }
-
-# Internet GW
+##############
+# Internet GW#
+##############
 resource "aws_internet_gateway" "main-gw" {
   vpc_id = aws_vpc.main.id
 
@@ -85,8 +89,9 @@ resource "aws_internet_gateway" "main-gw" {
     Name = "main"
   }
 }
-
-# route tables
+###############
+# route tables#
+###############
 resource "aws_route_table" "main-public" {
   vpc_id = aws_vpc.main.id
   route {
@@ -98,8 +103,9 @@ resource "aws_route_table" "main-public" {
     Name = "main-public-1"
   }
 }
-
-# route associations public
+############################
+# route associations public#
+############################
 resource "aws_route_table_association" "main-public-1-a" {
   subnet_id      = aws_subnet.main-public-1.id
   route_table_id = aws_route_table.main-public.id
