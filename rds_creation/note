@@ -1,0 +1,1 @@
+When applying the terraform apply for anything RDS related be sure to run <terraform apply/plan -var RDS_PASSWORD= > this will specify a password and allow the the terraform to build 
