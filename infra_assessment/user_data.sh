@@ -9,4 +9,4 @@ MYIP=`ifconfig | grep -E '(inet addr:10)' | awk '{ print $2 }' | cut -d ':' -f 2
 
 echo 'Hello World this is my IP: '$MYIP > /var/www/html/index.html 
 
-echo "The page was created by the user data" | sudo tee /var/www/html/index.html
+echo "The page was created by the user data. My hostname is $(hostnamectl)" | sudo tee /var/www/html/index.html
